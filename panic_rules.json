@@ -1,0 +1,1957 @@
+{
+  "version": 13,
+  "components": {
+    "flex-carga": {
+      "name": "Flex de carga (dock de carga)",
+      "summary": "Flex da parte inferior do aparelho, onde ficam a entrada de carga e outros componentes ligados à placa.",
+      "steps": [
+        "Confirme que o flex de carga está bem encaixado e travado no conector da placa.",
+        "Inspecione o flex e o conector: rasgos, dobras, sinais de líquido ou oxidação.",
+        "Veja se o flex já foi trocado antes. Peças de baixa qualidade costumam causar este tipo de falha.",
+        "Teste com outro flex de carga comprovadamente bom, de preferência original.",
+        "Se o defeito continuar, meça as linhas do conector direto na placa: o problema pode estar no conector, e não no flex."
+      ],
+      "notes": [
+        {
+          "models": [
+            "iPhone 15",
+            "iPhone 16",
+            "iPhone 17",
+            "iPhone Air"
+          ],
+          "text": "Nestes modelos, outras peças se ligam ao flex de carga. Se uma delas falhar ou estiver desconectada, o log pode apontar para o flex. Teste desconectando uma de cada vez."
+        }
+      ]
+    },
+    "bateria-comunicacao": {
+      "name": "Comunicação da bateria (SWI / I2C SMC)",
+      "summary": "Linhas de dados que levam as informações da bateria até o processador.",
+      "steps": [
+        "Veja se a porcentagem da bateria aparece no iOS.",
+        "Confira os pinos do conector da bateria na placa: amassados, quebrados ou oxidados.",
+        "Meça as linhas de dados da bateria (SWI ou I2C do SMC).",
+        "Teste com outra bateria e outro flex de bateria.",
+        "Confira a identificação da bateria em um software de diagnóstico, ou teste a bateria em outra placa."
+      ]
+    },
+    "bateria": {
+      "name": "Bateria",
+      "summary": "A própria bateria ou o conector dela.",
+      "steps": [
+        "Teste com uma bateria comprovadamente boa, de preferência original.",
+        "Confira o conector da bateria: limpeza, pinos e travamento.",
+        "Veja a saúde e os ciclos da bateria. Se estiver muito degradada, troque."
+      ]
+    },
+    "placa-energia": {
+      "name": "Placa: circuito de energia / SMC",
+      "summary": "Circuitos da placa que controlam energia, bateria e sensores.",
+      "steps": [
+        "Descarte antes as causas mais simples: flex de carga e bateria.",
+        "Meça consumo e tensões da placa com fonte de bancada.",
+        "Inspecione a placa em busca de líquido, corrosão ou curto.",
+        "Só então avalie reparo de placa."
+      ]
+    },
+    "barometro": {
+      "name": "Sensor de pressão (barômetro)",
+      "summary": "Sensor que não respondeu durante a inicialização.",
+      "steps": [
+        "Troque a peça que leva o barômetro neste modelo (confira o esquema) e veja se o código some do log.",
+        "Verifique o conector dessa peça e as linhas I2C."
+      ]
+    },
+    "microfones": {
+      "name": "Microfones e flex que os contêm",
+      "summary": "Um microfone não respondeu durante a inicialização.",
+      "steps": [
+        "Desconecte, um por vez, os flexes que têm microfone (carga, câmeras) e veja qual faz o código sumir.",
+        "Teste com um flex de carga bom.",
+        "Verifique os conectores desses flexes."
+      ]
+    },
+    "aop": {
+      "name": "Coprocessador de áudio e sensores (AOP)",
+      "summary": "Coprocessador ligado a microfones e sensores que travou.",
+      "steps": [
+        "Desconecte, um por vez, flexes e sensores (carga, câmeras, sensores) para achar o causador.",
+        "Teste o aparelho sem os flexes não essenciais conectados.",
+        "Se nada mudar, suspeite da placa."
+      ]
+    },
+    "sensores-termicos": {
+      "name": "Sensores de temperatura",
+      "summary": "O serviço que monitora a temperatura parou de responder.",
+      "steps": [
+        "Procure no log a linha 'Missing sensor(s)' para saber qual sensor falhou.",
+        "Teste a bateria e o flex de carga.",
+        "Verifique os conectores."
+      ]
+    },
+    "barramento-i2c": {
+      "name": "Barramento I2C",
+      "summary": "Linhas de comunicação I2C que ligam sensores ao processador.",
+      "steps": [
+        "Meça as linhas I2C ligadas ao sensor que falhou e compare com uma placa boa.",
+        "Procure corrosão ou componentes soltos perto do conector do flex envolvido.",
+        "Só avalie reparo de placa depois de testar o flex."
+      ]
+    },
+    "flex-barometro": {
+      "name": "Flex de carga / sensor de pressão (barômetro)",
+      "summary": "Em muitos modelos o barômetro fica no próprio flex de carga, então os dois são testados juntos.",
+      "steps": [
+        "Use o app Barômetro para ver se o sensor de pressão responde.",
+        "Confira o flex de carga: encaixe, rasgos, líquido, flex já trocado antes.",
+        "Teste com um flex de carga bom. Se o barômetro for peça separada no seu modelo, troque só ele.",
+        "Se persistir, meça as linhas I2C do sensor e do conector na placa."
+      ]
+    },
+    "flex-power-mic2": {
+      "name": "Flex do botão power / microfone 2",
+      "summary": "Em alguns modelos (como o iPhone 11) o microfone 2 fica no flex do botão power.",
+      "steps": [
+        "Confira se o flex do botão power está bem encaixado na placa.",
+        "Procure rasgos, oxidação ou sinais de líquido no flex.",
+        "Veja se o flex já foi trocado. Peças de baixa qualidade costumam falhar, prefira original.",
+        "Meça as linhas do conector na placa: o problema nem sempre está no flex."
+      ]
+    },
+    "circuito-audio": {
+      "name": "Circuito de áudio",
+      "summary": "Componentes da placa e periféricos ligados ao áudio.",
+      "steps": [
+        "Verifique os periféricos de áudio: alto-falantes, vibra, flexes e conectores.",
+        "Inspecione os componentes de áudio da placa em busca de corrosão ou curto."
+      ]
+    },
+    "codec-audio": {
+      "name": "Codec de áudio (CI)",
+      "summary": "Chip que processa o áudio e conversa com os microfones.",
+      "steps": [
+        "Descarte antes os flexes e microfones.",
+        "Inspecione o chip e a solda dele, e avalie reballing ou troca se necessário."
+      ]
+    },
+    "vibracall": {
+      "name": "Vibracall (Taptic Engine)",
+      "summary": "Motor de vibração, ligado ao coprocessador de sensores.",
+      "steps": [
+        "Desconecte o Taptic Engine e veja se o erro muda.",
+        "Teste com um Taptic Engine bom e confira o conector."
+      ]
+    },
+    "display": {
+      "name": "Display (tela)",
+      "summary": "A tela, o flex dela ou a alimentação que ela recebe.",
+      "steps": [
+        "Confira o flex e o conector da tela, e a tela em si.",
+        "Verifique a alimentação da tela na placa.",
+        "Teste com uma tela de boa qualidade para descartar a peça."
+      ]
+    },
+    "cameras": {
+      "name": "Câmeras",
+      "summary": "Câmeras, flexes e circuito de alimentação delas.",
+      "steps": [
+        "Veja se as câmeras aparecem corretamente em um software de diagnóstico.",
+        "Desconecte as câmeras, uma de cada vez, e veja se o erro muda.",
+        "Confira o flex, o conector e a alimentação (LDO e capacitores) de cada câmera."
+      ]
+    },
+    "linhas-mipi": {
+      "name": "Linhas MIPI",
+      "summary": "Linhas de dados de alta velocidade que ligam tela e câmeras ao processador.",
+      "steps": [
+        "Meça as linhas MIPI da tela e das câmeras e compare com uma placa boa.",
+        "Procure corrosão ou trilhas danificadas perto dos conectores."
+      ]
+    },
+    "flex-botao-power": {
+      "name": "Flex do botão power",
+      "summary": "Flex do botão de energia, que em alguns modelos leva também outros sensores.",
+      "steps": [
+        "Confira se o flex está bem encaixado na placa.",
+        "Procure rasgos, oxidação ou sinais de líquido.",
+        "Teste com um flex bom, de preferência original, e meça as linhas do conector na placa."
+      ]
+    },
+    "flex-carga-mic1": {
+      "name": "Flex de carga / microfone 1",
+      "summary": "Em vários modelos o microfone 1 fica no flex de carga.",
+      "steps": [
+        "Confira o encaixe do flex de carga e procure rasgos, oxidação ou líquido.",
+        "Veja se o flex já foi trocado antes. Peças de baixa qualidade costumam falhar.",
+        "Teste com um flex de carga bom, de preferência original.",
+        "Se persistir, meça as linhas do microfone e do conector na placa."
+      ]
+    },
+    "firmware": {
+      "name": "Firmware",
+      "summary": "Firmware de um coprocessador do aparelho falhou.",
+      "steps": [
+        "Restaure o iOS em modo DFU para regravar o firmware.",
+        "Se o erro voltar depois da restauração, suspeite de hardware."
+      ]
+    },
+    "sensor-luz": {
+      "name": "Sensor de luz ambiente (ALS)",
+      "summary": "Sensor que ajusta o brilho da tela, ligado ao flex de proximidade.",
+      "steps": [
+        "Confira as linhas do flex, o conector e o circuito ligado ao sensor.",
+        "Teste com um flex de proximidade bom."
+      ]
+    },
+    "alto-falante-auricular": {
+      "name": "Alto-falante auricular",
+      "summary": "Alto-falante de ligação (parte de cima da frente do aparelho).",
+      "steps": [
+        "Desconecte o alto-falante auricular e veja se o erro muda.",
+        "Teste com um bom e confira o conector."
+      ]
+    },
+    "software": {
+      "name": "Software (iOS)",
+      "summary": "Um serviço do sistema parou de responder.",
+      "steps": [
+        "Atualize ou restaure o iOS (modo DFU, se necessário).",
+        "Se o erro voltar depois de restaurar, suspeite de hardware."
+      ]
+    },
+    "nand": {
+      "name": "Armazenamento (NAND)",
+      "summary": "Falha no controlador ou na memória de armazenamento.",
+      "steps": [
+        "Tente restaurar pelo modo DFU.",
+        "Se o erro voltar, avalie reballing ou troca da NAND.",
+        "Faça backup antes, se possível."
+      ]
+    },
+    "baseband": {
+      "name": "Baseband / modem",
+      "summary": "Falha no módulo de rede celular.",
+      "steps": [
+        "Teste sem chip SIM.",
+        "Verifique antenas e conectores do modem.",
+        "Avalie os componentes do modem na placa."
+      ]
+    },
+    "wifi": {
+      "name": "Wi-Fi / Bluetooth",
+      "summary": "Falha crítica no módulo de Wi-Fi.",
+      "steps": [
+        "Verifique o chip de Wi-Fi e as peças ao redor.",
+        "Teste antenas e conexões.",
+        "Avalie reparo na placa."
+      ]
+    },
+    "bussola-giroscopio": {
+      "name": "Bússola / giroscópio (sensores no flex)",
+      "summary": "Sensores de movimento que ficam em flexes do aparelho e conversam com o controlador de energia.",
+      "steps": [
+        "Teste a bússola no app Bússola do iPhone e veja se o giroscópio responde.",
+        "Verifique o flex que leva esses sensores e o conector dele na placa.",
+        "Troque o flex por um comprovadamente bom e teste de novo."
+      ]
+    },
+    "proximidade-flex": {
+      "name": "Flex do sensor de proximidade",
+      "summary": "Flex da parte de cima do aparelho que leva o sensor de proximidade e outros sensores.",
+      "steps": [
+        "Teste se a tela apaga ao aproximar do rosto numa ligação.",
+        "Confira o flex e o conector: rasgos, oxidação, sinais de líquido.",
+        "Desconecte o flex e veja se o erro muda.",
+        "Teste com um flex comprovadamente bom."
+      ]
+    },
+    "flex-wireless-nfc": {
+      "name": "Flex de carga sem fio / NFC (vidro traseiro)",
+      "summary": "Flex que fica sob o vidro traseiro e atende a carga sem fio e o NFC.",
+      "steps": [
+        "Veja se o aparelho já teve o vidro traseiro trocado. Um flex rompido ou mal encaixado nessa troca é uma causa comum.",
+        "Meça as linhas do flex e o conector dele na placa.",
+        "Confira se ele está bem conectado.",
+        "Teste desconectando o flex e veja se o erro muda."
+      ]
+    },
+    "ic-esim": {
+      "name": "Circuito do e-SIM",
+      "summary": "Chip e circuito do e-SIM na placa.",
+      "steps": [
+        "Inspecione o chip do e-SIM e os componentes ao redor.",
+        "Se os outros testes falharem, avalie o reparo na placa."
+      ]
+    },
+    "circuito-carga": {
+      "name": "Circuito de carga (ICs de carga)",
+      "summary": "Chips que controlam a carga da bateria na placa.",
+      "steps": [
+        "Faça a inspeção completa do circuito de carga e dos ICs de carga.",
+        "Analise o consumo na fonte de bancada.",
+        "Se houver defeito, reballing ou troca dos ICs de carga."
+      ]
+    },
+    "botao-energia-camera": {
+      "name": "Flex do botão de energia / câmera frontal",
+      "summary": "Peças que ficam na parte de cima do aparelho e se ligam ao coprocessador de sensores.",
+      "steps": [
+        "Desconecte o flex do botão de energia e veja se o erro muda.",
+        "Desconecte a câmera frontal e o conjunto de sensores frontais, um de cada vez.",
+        "Inspecione conectores e flexes: rasgos, oxidação, sinais de líquido.",
+        "Teste com peças comprovadamente boas."
+      ]
+    },
+    "ram": {
+      "name": "Memória RAM",
+      "summary": "A memória de trabalho do aparelho ou sua comunicação com o processador.",
+      "steps": [
+        "Restaure o iOS em modo DFU para descartar software.",
+        "Se o erro continuar, avalie as linhas da RAM e a solda dela na placa.",
+        "Compare com uma placa boa do mesmo modelo, se tiver."
+      ]
+    },
+    "eeprom-cpu": {
+      "name": "EEPROM da CPU",
+      "summary": "Memória pequena ligada ao processador, que guarda dados de segurança e de calibração. Falha nela costuma derrubar o aparelho logo na inicialização.",
+      "steps": [
+        "Meça as linhas de comunicação da EEPROM e confira o circuito ligado a elas.",
+        "Procure componentes soltos, queimados ou com oxidação ao redor da CPU.",
+        "Se você tiver programador, leia e regrave a EEPROM e teste de novo.",
+        "Compare com uma placa boa do mesmo modelo, se tiver uma."
+      ]
+    },
+    "cpu": {
+      "name": "CPU (processador)",
+      "summary": "O processador principal ou o circuito que o alimenta.",
+      "steps": [
+        "Meça as alimentações da CPU (circuito gerenciador de energia) e os indutores.",
+        "Verifique as linhas da CPU, da RAM e da GPU.",
+        "Faça a inspeção da parte lógica, procurando curto ou consumo anormal na fonte de bancada.",
+        "Só considere o reballing da CPU depois de descartar as causas anteriores."
+      ]
+    },
+    "interposer": {
+      "name": "Interposer (união das placas)",
+      "summary": "Camada que une as duas placas do aparelho. Rachaduras ou bolhas aqui interrompem a comunicação entre elas.",
+      "steps": [
+        "Procure sinais de queda, aquecimento forte ou reparo anterior na placa.",
+        "Verifique as linhas de comunicação entre as duas placas (pads).",
+        "Limpeza e reballing das placas ficam para o final, depois dos outros testes."
+      ],
+      "notes": [
+        {
+          "models": [
+            "iPhone X",
+            "iPhone 11",
+            "iPhone 12",
+            "iPhone 13",
+            "iPhone 14",
+            "iPhone 15",
+            "iPhone 16",
+            "iPhone 17"
+          ],
+          "text": "Este modelo tem duas placas unidas por interposer. Em aparelhos de placa única, este item não se aplica."
+        }
+      ]
+    },
+    "biometria": {
+      "name": "Touch ID / Face ID",
+      "summary": "Circuito ou flex de biometria que conversa com o processador de segurança.",
+      "steps": [
+        "Teste se o Touch ID ou o Face ID ainda funciona e se aceita novo cadastro.",
+        "Confira flex e conector do sensor de biometria.",
+        "Teste desconectando o flex de biometria e veja se o erro muda."
+      ]
+    },
+    "nfc": {
+      "name": "NFC",
+      "summary": "Chip e flex de aproximação (pagamento por aproximação).",
+      "steps": [
+        "Teste o NFC no próprio aparelho: app Atalhos, Automação, NFC, Escanear, aproximando um cartão ou etiqueta.",
+        "Confira o flex e o conector do NFC.",
+        "Teste desconectando o flex do NFC e veja se o erro muda."
+      ]
+    }
+  },
+  "signals": [
+    {
+      "id": "sep-rom-panic",
+      "title": "Falha no processador de segurança (SEP) durante a inicialização",
+      "explanation": "O SEP (Secure Enclave) não conseguiu iniciar e derrubou o aparelho. Costuma estar ligado à memória de segurança da CPU (EEPROM), à própria CPU, à união das placas ou a circuitos de biometria. Restaurar o iOS é o primeiro teste.",
+      "patterns": [
+        "SEP ROM boot panic",
+        "\\bSEP\\b[^\\n]*\\bpanic"
+      ],
+      "strength": 8,
+      "causes": [
+        {
+          "component": "eeprom-cpu",
+          "weight": 30
+        },
+        {
+          "component": "software",
+          "weight": 20
+        },
+        {
+          "component": "cpu",
+          "weight": 20
+        },
+        {
+          "component": "interposer",
+          "weight": 12
+        },
+        {
+          "component": "biometria",
+          "weight": 10
+        },
+        {
+          "component": "nfc",
+          "weight": 8
+        }
+      ]
+    },
+    {
+      "id": "apple-soc-hot",
+      "title": "Alerta de temperatura ou energia no processador (AppleSocHot)",
+      "explanation": "O sistema registrou um problema elétrico ou térmico ligado ao processador ou ao chip de energia. Regra provisória, ainda sem confirmação de bancada.",
+      "patterns": [
+        "AppleSocHot"
+      ],
+      "strength": 3,
+      "causes": [
+        {
+          "component": "cpu",
+          "weight": 50
+        },
+        {
+          "component": "placa-energia",
+          "weight": 50
+        }
+      ]
+    },
+    {
+      "id": "aop-nmi-power",
+      "title": "Coprocessador AOP com alerta de energia (AOP NMI POWER)",
+      "explanation": "O AOP acusou falha de energia em um periférico ligado a ele. Costuma envolver o botão de energia ou a câmera frontal. Regra provisória, ainda sem confirmação de bancada.",
+      "patterns": [
+        "AOP\\s+NMI\\s+POWER"
+      ],
+      "strength": 3,
+      "causes": [
+        {
+          "component": "botao-energia-camera",
+          "weight": 60
+        },
+        {
+          "component": "aop",
+          "weight": 25
+        },
+        {
+          "component": "placa-energia",
+          "weight": 15
+        }
+      ]
+    },
+    {
+      "id": "aop-k2-bosch",
+      "title": "Falha no canal de controle do AOP (K2 / Bosch)",
+      "explanation": "O AOP perdeu a comunicação em um canal ligado ao áudio. Costuma apontar para o flex de carga. Regra provisória, ainda sem confirmação de bancada.",
+      "patterns": [
+        "AOP[^\\n]*\\bK2\\b[^\\n]*Bosch",
+        "Bosch[^\\n]*control channel"
+      ],
+      "strength": 3,
+      "causes": [
+        {
+          "component": "flex-carga",
+          "weight": 70
+        },
+        {
+          "component": "aop",
+          "weight": 30
+        }
+      ]
+    },
+    {
+      "id": "undefined-kernel-instruction",
+      "title": "Instrução inválida no kernel",
+      "explanation": "O sistema executou uma instrução inválida, o que pode vir de RAM, armazenamento ou software. Regra provisória, ainda sem confirmação de bancada.",
+      "patterns": [
+        "[Uu]ndefined kernel instruction"
+      ],
+      "strength": 3,
+      "causes": [
+        {
+          "component": "ram",
+          "weight": 40
+        },
+        {
+          "component": "nand",
+          "weight": 40
+        },
+        {
+          "component": "software",
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "id": "bsc-13-bit11",
+      "title": "SMC BSC: padrão da família iPhone 13 (sensor no flex de carga)",
+      "explanation": "O controlador de energia falhou na comunicação com um sensor que, nesta família, costuma estar no flex de carga. Padrão observado em casos reais; ainda falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/(?:d16|d17|d63|d64)/",
+        "S\\.sensor array 0 - \\d+ is (?:0x0+|0), (?:0x800|2048)\\b"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "flex-carga",
+          "weight": 80
+        },
+        {
+          "component": "interposer",
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "id": "bsc-14pm-bit18",
+      "title": "SMC BSC: padrão do iPhone 14 Pro / Pro Max (flex de carga)",
+      "explanation": "O controlador de energia falhou na comunicação com um sensor ligado ao flex de carga. Este padrão já teve flex de carga confirmado em bancada no 14 Pro Max.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/(?:d73|d74)/",
+        "S\\.sensor array 0 - \\d+ is (?:0x0+|0), (?:0x40000|262144)\\b"
+      ],
+      "suppressedBy": [
+        "bsc-14pm-ver150"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "flex-carga",
+          "weight": 60
+        },
+        {
+          "component": "interposer",
+          "weight": 40
+        }
+      ]
+    },
+    {
+      "id": "bsc-14pm-bit19",
+      "title": "SMC BSC: padrão do iPhone 14 Pro Max (sensor de proximidade)",
+      "explanation": "O controlador de energia falhou na comunicação com um sensor que, neste padrão, costuma estar no flex do sensor de proximidade. Padrão observado em casos reais; ainda falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/d74/",
+        "S\\.sensor array 0 - \\d+ is (?:0x0+|0), (?:0x80000|524288)\\b"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "proximidade-flex",
+          "weight": 40
+        },
+        {
+          "component": "flex-carga",
+          "weight": 25
+        },
+        {
+          "component": "barometro",
+          "weight": 20
+        },
+        {
+          "component": "interposer",
+          "weight": 15
+        }
+      ]
+    },
+    {
+      "id": "bsc-14-bit22",
+      "title": "SMC BSC: padrão do iPhone 14 / 14 Plus (carga sem fio / NFC)",
+      "explanation": "O controlador de energia falhou na comunicação com um sensor que, neste padrão, costuma estar no flex de carga sem fio e NFC do vidro traseiro. Padrão observado em casos reais; ainda falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/(?:d27|d28)/",
+        "S\\.sensor array 0 - \\d+ is (?:0x0+|0), (?:0x400000|4194304)\\b"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "flex-wireless-nfc",
+          "weight": 70
+        },
+        {
+          "component": "proximidade-flex",
+          "weight": 10
+        },
+        {
+          "component": "flex-carga",
+          "weight": 10
+        },
+        {
+          "component": "ic-esim",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "bsc-15-taop",
+      "title": "SMC BSC: padrão do iPhone 15 (TAOP)",
+      "explanation": "O controlador de energia falhou na comunicação com um sensor ligado ao flex de carga. No iPhone 15 o flex de carga concentra vários periféricos, então a lista inclui flex de carga, barômetro, proximidade e interposer. Ainda falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/d37/",
+        "SMC BSC failure,\\s*TAOP"
+      ],
+      "excludeIf": [
+        "SMC BSC failure,[^\\n]*TAOJ"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "flex-carga",
+          "weight": 40
+        },
+        {
+          "component": "barometro",
+          "weight": 25
+        },
+        {
+          "component": "proximidade-flex",
+          "weight": 20
+        },
+        {
+          "component": "interposer",
+          "weight": 15
+        }
+      ]
+    },
+    {
+      "id": "bsc-15-taop-taoj",
+      "title": "SMC BSC: padrão do iPhone 15 (TAOP + TAOJ, carga sem fio)",
+      "explanation": "Além do flex de carga, o log cita a linha ligada ao flex de carga sem fio / NFC do vidro traseiro. Se o vidro traseiro já foi trocado, suspeite desse flex. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/d37/",
+        "SMC BSC failure,\\s*TAOP\\s+TAOJ"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "flex-wireless-nfc",
+          "weight": 50
+        },
+        {
+          "component": "flex-carga",
+          "weight": 50
+        }
+      ]
+    },
+    {
+      "id": "bsc-15plus-taoj",
+      "title": "SMC BSC: padrão do iPhone 15 / 15 Plus (TAOJ, carga sem fio)",
+      "explanation": "O sensor citado costuma estar no flex de carga sem fio / NFC do vidro traseiro. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/(?:d37|d38)/",
+        "SMC BSC failure,\\s*TAOJ"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "flex-wireless-nfc",
+          "weight": 40
+        },
+        {
+          "component": "proximidade-flex",
+          "weight": 25
+        },
+        {
+          "component": "flex-carga",
+          "weight": 20
+        },
+        {
+          "component": "bussola-giroscopio",
+          "weight": 15
+        }
+      ]
+    },
+    {
+      "id": "bsc-15pro-taoc-taoj",
+      "title": "SMC BSC: padrão do iPhone 15 Pro (TAOC + TAOJ)",
+      "explanation": "O controlador de energia falhou em sensores ligados à carga sem fio / NFC e ao flex do sensor de proximidade. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/d83_esim/",
+        "SMC BSC failure,\\s*TAOC\\s+TAOJ"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "flex-wireless-nfc",
+          "weight": 40
+        },
+        {
+          "component": "proximidade-flex",
+          "weight": 30
+        },
+        {
+          "component": "flex-carga",
+          "weight": 20
+        },
+        {
+          "component": "bussola-giroscopio",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "bsc-16pro-taop-taoc",
+      "title": "SMC BSC: padrão do iPhone 16 Pro (TAOP + TAOC)",
+      "explanation": "Aponta principalmente para o flex de carga, com flexes ligados a ele (proximidade, carga sem fio). Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/(?:d93|d94)/",
+        "SMC BSC failure,\\s*TAOP\\s+TAOC"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "flex-carga",
+          "weight": 50
+        },
+        {
+          "component": "proximidade-flex",
+          "weight": 20
+        },
+        {
+          "component": "flex-wireless-nfc",
+          "weight": 20
+        },
+        {
+          "component": "interposer",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "bsc-17pm-taop-taoc",
+      "title": "SMC BSC: padrão do iPhone 17 Pro Max (TAOP + TAOC)",
+      "explanation": "Neste padrão o principal suspeito é o flex de carga. Confira também os flexes que se ligam a ele. Falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/v54/",
+        "SMC BSC failure,\\s*TAOP\\s+TAOC"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "flex-carga",
+          "weight": 100
+        }
+      ]
+    },
+    {
+      "id": "bsc-bit20-d37",
+      "title": "SMC BSC: padrão do iPhone 15 (sensor de proximidade)",
+      "explanation": "O sensor citado costuma estar no flex do sensor de proximidade no iPhone 15, com o flex de carga e o flex do botão power como outras suspeitas. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/d37/",
+        "S\\.sensor array 0 - \\d+ is (?:0x0+|0), (?:0x100000|1048576)\\b"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "proximidade-flex",
+          "weight": 40
+        },
+        {
+          "component": "flex-carga",
+          "weight": 35
+        },
+        {
+          "component": "flex-botao-power",
+          "weight": 25
+        }
+      ]
+    },
+    {
+      "id": "bsc-bit20-d27",
+      "title": "SMC BSC: padrão do iPhone 14 (flex de carga)",
+      "explanation": "No iPhone 14 este padrão aponta primeiro para o flex de carga, depois para o flex do botão power e o do sensor de proximidade. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/(?:d27|d28)/",
+        "S\\.sensor array 0 - \\d+ is (?:0x0+|0), (?:0x100000|1048576)\\b"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "flex-carga",
+          "weight": 45
+        },
+        {
+          "component": "flex-botao-power",
+          "weight": 30
+        },
+        {
+          "component": "proximidade-flex",
+          "weight": 25
+        }
+      ]
+    },
+    {
+      "id": "bsc-bit20-d74",
+      "title": "SMC BSC: padrão do iPhone 14 Pro Max (flex do botão power)",
+      "explanation": "No 14 Pro / Pro Max este padrão aponta primeiro para o flex do botão power, depois para o flex de carga e o do sensor de proximidade. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/(?:d73|d74)/",
+        "S\\.sensor array 0 - \\d+ is (?:0x0+|0), (?:0x100000|1048576)\\b"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "flex-botao-power",
+          "weight": 45
+        },
+        {
+          "component": "flex-carga",
+          "weight": 30
+        },
+        {
+          "component": "proximidade-flex",
+          "weight": 25
+        }
+      ]
+    },
+    {
+      "id": "bsc-16-d47a",
+      "title": "SMC BSC: padrão do iPhone 16 (flex de carga, carga sem fio e proximidade)",
+      "explanation": "Três suspeitos com peso parecido: flex de carga, flex de carga sem fio/NFC e flex do sensor de proximidade. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/d47a/"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "flex-carga",
+          "weight": 30
+        },
+        {
+          "component": "flex-wireless-nfc",
+          "weight": 30
+        },
+        {
+          "component": "proximidade-flex",
+          "weight": 30
+        },
+        {
+          "component": "interposer",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "dcp-panic",
+      "title": "Falha no coprocessador de exibição (DCP)",
+      "explanation": "O DCP cuida da tela e do toque. O principal suspeito é a tela, com o software como primeiro teste. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "\\bDCP\\s+PANIC"
+      ],
+      "strength": 8,
+      "causes": [
+        {
+          "component": "display",
+          "weight": 70
+        },
+        {
+          "component": "software",
+          "weight": 10
+        },
+        {
+          "component": "nand",
+          "weight": 10
+        },
+        {
+          "component": "wifi",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "mipi-dsi-timeout",
+      "title": "Falha de comunicação nas linhas MIPI (tela)",
+      "explanation": "O controlador MIPI não concluiu a comunicação com a tela ou as câmeras. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "AppleSynopsysMIPIDSIController",
+        "Timing out on commit"
+      ],
+      "strength": 8,
+      "causes": [
+        {
+          "component": "linhas-mipi",
+          "weight": 30
+        },
+        {
+          "component": "cameras",
+          "weight": 25
+        },
+        {
+          "component": "display",
+          "weight": 25
+        },
+        {
+          "component": "cpu",
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "id": "iomfb-overflow",
+      "title": "Falha no coprocessador de exibição (IOMFB / tela)",
+      "explanation": "O controlador da tela acusou estouro de dados. O principal suspeito é a tela, com o software como primeiro teste. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "IOMFB[^\\n]*(failure|overflow)",
+        "UPPipe"
+      ],
+      "strength": 8,
+      "causes": [
+        {
+          "component": "display",
+          "weight": 70
+        },
+        {
+          "component": "software",
+          "weight": 10
+        },
+        {
+          "component": "nand",
+          "weight": 10
+        },
+        {
+          "component": "wifi",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "amcc-trustzone",
+      "title": "Violação de acesso à memória (AMCC TrustZone)",
+      "explanation": "O sistema bloqueou um acesso indevido à memória. Aponta para os sensores do flex de proximidade e a união das placas. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "AMCC[^\\n]*TrustZone"
+      ],
+      "strength": 6,
+      "causes": [
+        {
+          "component": "sensor-luz",
+          "weight": 35
+        },
+        {
+          "component": "proximidade-flex",
+          "weight": 30
+        },
+        {
+          "component": "alto-falante-auricular",
+          "weight": 20
+        },
+        {
+          "component": "interposer",
+          "weight": 15
+        }
+      ]
+    },
+    {
+      "id": "aop-eiger",
+      "title": "Falha no AOP em linhas EIGER",
+      "explanation": "O erro cita o módulo Eiger do AOP. Aponta primeiro para o flex de carga (que leva o barômetro), depois para o flex de proximidade e o do botão power. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "Eiger\\.cpp"
+      ],
+      "strength": 6,
+      "causes": [
+        {
+          "component": "flex-barometro",
+          "weight": 80
+        },
+        {
+          "component": "proximidade-flex",
+          "weight": 10
+        },
+        {
+          "component": "flex-botao-power",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "bsc-14pm-ver150",
+      "title": "SMC BSC: padrão do iPhone 14 Pro / Pro Max (iOS 18, flex de carga)",
+      "explanation": "Aponta quase só para o flex de carga, com as linhas de identificação da bateria como segunda hipótese. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/(?:d73|d74)/",
+        "SMC BSC failure,\\s*spreadsheet ver\\(\\*10\\) 150",
+        "S\\.sensor array 0 - \\d+ is (?:0x0+|0), (?:0x40000|262144)\\b"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "flex-carga",
+          "weight": 90
+        },
+        {
+          "component": "bateria-comunicacao",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "bsc-14pm-taop-taoj",
+      "title": "SMC BSC: padrão do iPhone 14 Pro Max (TAOP + TAOJ)",
+      "explanation": "Três suspeitos: flex de carga (com o barômetro), flex do botão power e flex do sensor de proximidade. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/(?:d73|d74)/",
+        "SMC BSC failure,\\s*TAOP\\s+TAOJ"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "flex-barometro",
+          "weight": 40
+        },
+        {
+          "component": "flex-botao-power",
+          "weight": 40
+        },
+        {
+          "component": "proximidade-flex",
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "id": "bsc-14-ver40-bit21",
+      "title": "SMC BSC: padrão do iPhone 14 (flex de carga com vários sensores)",
+      "explanation": "Flex de carga como principal suspeito, seguido de proximidade e carga sem fio. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/d27/",
+        "S\\.sensor array 0 - \\d+ is (?:0x0+|0), (?:0x300000|3145728)\\b"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "flex-carga",
+          "weight": 50
+        },
+        {
+          "component": "proximidade-flex",
+          "weight": 20
+        },
+        {
+          "component": "flex-wireless-nfc",
+          "weight": 20
+        },
+        {
+          "component": "interposer",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "bsc-14-taop-taoj",
+      "title": "SMC BSC: padrão do iPhone 14 (TAOP + TAOJ)",
+      "explanation": "Aponta para a identificação da bateria, a própria bateria e o flex de carga com pesos parecidos. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/(?:d27|d28)/",
+        "SMC BSC failure,\\s*TAOP\\s+TAOJ"
+      ],
+      "suppressedBy": [
+        "bsc-14-bit20-22"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "bateria-comunicacao",
+          "weight": 30
+        },
+        {
+          "component": "bateria",
+          "weight": 30
+        },
+        {
+          "component": "flex-carga",
+          "weight": 30
+        },
+        {
+          "component": "interposer",
+          "weight": 10
+        },
+        {
+          "component": "flex-wireless-nfc",
+          "weight": 5
+        }
+      ]
+    },
+    {
+      "id": "pmp-sochot",
+      "title": "Alerta de temperatura no gerenciador de energia (PMP SOCHOT)",
+      "explanation": "Aponta para uma falha em linha da CPU ou alta temperatura na placa. Se a placa não esquentar, suspeite de solda fria na linha de alerta da CPU. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "PMP\\s+PANIC[^\\n]*SOCHOT"
+      ],
+      "strength": 8,
+      "causes": [
+        {
+          "component": "cpu",
+          "weight": 50
+        },
+        {
+          "component": "placa-energia",
+          "weight": 40
+        },
+        {
+          "component": "software",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "apt-firmware",
+      "title": "Falha de firmware (APT)",
+      "explanation": "Um firmware interno falhou. Restaurar o iOS é o primeiro teste; depois, memória NAND e o flex do botão power. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "apt firmware",
+        "apt_vbi"
+      ],
+      "strength": 8,
+      "causes": [
+        {
+          "component": "software",
+          "weight": 30
+        },
+        {
+          "component": "nand",
+          "weight": 30
+        },
+        {
+          "component": "firmware",
+          "weight": 25
+        },
+        {
+          "component": "flex-botao-power",
+          "weight": 15
+        }
+      ]
+    },
+    {
+      "id": "bsc-14p-bit19",
+      "title": "SMC BSC: padrão do iPhone 14 Pro (sensor de proximidade)",
+      "explanation": "Aponta para o flex de carga e o barômetro, com o flex do sensor de proximidade logo depois. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/d73/",
+        "S\\.sensor array 0 - \\d+ is (?:0x0+|0), (?:0x80000|524288)\\b"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "flex-carga",
+          "weight": 35
+        },
+        {
+          "component": "barometro",
+          "weight": 25
+        },
+        {
+          "component": "proximidade-flex",
+          "weight": 25
+        },
+        {
+          "component": "interposer",
+          "weight": 15
+        }
+      ]
+    },
+    {
+      "id": "bsc-13-bit12",
+      "title": "SMC BSC: padrão da família iPhone 13 (flex do sensor de proximidade)",
+      "explanation": "O sensor citado costuma estar no flex do sensor de proximidade. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/(?:d16|d17|d63|d64)/",
+        "S\\.sensor array 0 - \\d+ is (?:0x0+|0), (?:0x1000|4096)\\b"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "proximidade-flex",
+          "weight": 100
+        }
+      ]
+    },
+    {
+      "id": "bsc-13-bit11-12",
+      "title": "SMC BSC: padrão da família iPhone 13 (flex de carga e proximidade)",
+      "explanation": "Aponta primeiro para o flex de carga e depois para o flex do sensor de proximidade. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/(?:d16|d17|d63|d64)/",
+        "S\\.sensor array 0 - \\d+ is (?:0x0+|0), (?:0x1800|6144)\\b"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "flex-carga",
+          "weight": 60
+        },
+        {
+          "component": "proximidade-flex",
+          "weight": 40
+        }
+      ]
+    },
+    {
+      "id": "bsc-15pro-taoc",
+      "title": "SMC BSC: padrão do iPhone 15 Pro / Pro Max (TAOC)",
+      "explanation": "Aponta para o flex do sensor de proximidade, o flex de carga e a bússola. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/(?:d83|d83_esim|d84|d84_esim)/",
+        "SMC BSC failure,\\s*TAOC\\s+----"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "proximidade-flex",
+          "weight": 40
+        },
+        {
+          "component": "flex-carga",
+          "weight": 30
+        },
+        {
+          "component": "bussola-giroscopio",
+          "weight": 20
+        },
+        {
+          "component": "flex-wireless-nfc",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "bsc-14pm-unspecified",
+      "title": "SMC BSC: sensor não especificado no iPhone 14 Pro / Pro Max (iOS 26.0)",
+      "explanation": "O log não identifica o sensor. A lista vai do flex de carga ao flex do botão power e ao do sensor de proximidade, depois software e interposer. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/(?:d73|d74)/",
+        "S\\.sensor array 0 - \\d+ is (?:0x0+|0), (?:0x120000|1179648)\\b"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "flex-carga",
+          "weight": 30
+        },
+        {
+          "component": "proximidade-flex",
+          "weight": 25
+        },
+        {
+          "component": "flex-botao-power",
+          "weight": 20
+        },
+        {
+          "component": "software",
+          "weight": 15
+        },
+        {
+          "component": "interposer",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "bsc-14pm-taoi",
+      "title": "SMC BSC: padrão do iPhone 14 Pro / Pro Max (TAOI)",
+      "explanation": "Aponta para o flex de carga, a união das placas e os sensores de movimento (bússola e giroscópio), com a CPU como hipótese menor. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure,\\s*TAOI"
+      ],
+      "requireAll": [
+        "target/(?:d73|d74)/"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "flex-carga",
+          "weight": 50
+        },
+        {
+          "component": "interposer",
+          "weight": 30
+        },
+        {
+          "component": "bussola-giroscopio",
+          "weight": 10
+        },
+        {
+          "component": "cpu",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "bsc-14-bit20-22",
+      "title": "SMC BSC: padrão do iPhone 14 / 14 Plus (bits 20 e 22)",
+      "explanation": "Aponta para a identificação da bateria, a própria bateria e o flex de carga com pesos parecidos, e depois para a união das placas. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "requireAll": [
+        "target/(?:d27|d28)/",
+        "S\\.sensor array 0 - \\d+ is (?:0x0+|0), (?:0x500000|5242880)\\b"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "bateria-comunicacao",
+          "weight": 30
+        },
+        {
+          "component": "bateria",
+          "weight": 30
+        },
+        {
+          "component": "flex-carga",
+          "weight": 30
+        },
+        {
+          "component": "interposer",
+          "weight": 10
+        },
+        {
+          "component": "flex-wireless-nfc",
+          "weight": 5
+        }
+      ]
+    },
+    {
+      "id": "bsc-battery-tb0t-d28",
+      "title": "SMC BSC: sensor de temperatura da bateria (TB0T) no iPhone 14 Plus",
+      "explanation": "O controlador de energia não conseguiu falar com o sensor de temperatura da bateria. Aponta para a identificação da bateria (linhas SWI / I2C). Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure,\\s*TB0T"
+      ],
+      "requireAll": [
+        "target/(?:d27|d28)/"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "bateria-comunicacao",
+          "weight": 60
+        },
+        {
+          "component": "bateria",
+          "weight": 20
+        },
+        {
+          "component": "circuito-carga",
+          "weight": 10
+        },
+        {
+          "component": "flex-carga",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "bsc-battery-tb0t",
+      "title": "SMC BSC: sensor de temperatura da bateria (TB0T)",
+      "explanation": "O controlador de energia não conseguiu falar com o sensor de temperatura da bateria. Aponta para a identificação da bateria (linhas SWI / I2C). Padrão observado em casos reais; ainda falta confirmação de bancada.",
+      "patterns": [
+        "SMC BSC failure,\\s*TB0T"
+      ],
+      "suppressedBy": [
+        "bsc-battery-tb0t-d28"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "bateria-comunicacao",
+          "weight": 60
+        },
+        {
+          "component": "bateria",
+          "weight": 20
+        },
+        {
+          "component": "circuito-carga",
+          "weight": 10
+        },
+        {
+          "component": "barramento-i2c",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "smc-bsc-failure",
+      "title": "SMC não conseguiu concluir uma comunicação (SMC BSC failure)",
+      "explanation": "O controlador de energia do aparelho (SMC) falhou ao concluir uma comunicação e derrubou o sistema. Na prática, costuma apontar para o flex de carga e, com menos frequência, para as linhas de dados da bateria.",
+      "patterns": [
+        "SMC BSC failure"
+      ],
+      "suppressedBy": [
+        "bsc-13-bit11",
+        "bsc-14pm-bit18",
+        "bsc-14pm-bit19",
+        "bsc-14-bit22",
+        "bsc-battery-tb0t",
+        "bsc-battery-tb0t-d28",
+        "bsc-15-taop",
+        "bsc-15-taop-taoj",
+        "bsc-15plus-taoj",
+        "bsc-15pro-taoc-taoj",
+        "bsc-16pro-taop-taoc",
+        "bsc-17pm-taop-taoc",
+        "bsc-bit20-d37",
+        "bsc-bit20-d27",
+        "bsc-bit20-d74",
+        "bsc-16-d47a",
+        "bsc-14pm-ver150",
+        "bsc-14pm-taop-taoj",
+        "bsc-14-ver40-bit21",
+        "bsc-14-taop-taoj",
+        "bsc-14p-bit19",
+        "bsc-13-bit12",
+        "bsc-13-bit11-12",
+        "bsc-15pro-taoc",
+        "bsc-14pm-unspecified",
+        "bsc-14pm-taoi",
+        "bsc-14-bit20-22"
+      ],
+      "strength": 10,
+      "causes": [
+        {
+          "component": "flex-carga",
+          "weight": 80
+        },
+        {
+          "component": "bateria-comunicacao",
+          "weight": 15
+        },
+        {
+          "component": "bateria",
+          "weight": 5
+        }
+      ]
+    },
+    {
+      "id": "smc-panic",
+      "title": "Falha do controlador de energia (SMC)",
+      "explanation": "O SMC, que cuida de energia, bateria e sensores, travou. A causa exata depende da mensagem completa: veja o trecho do log em Evidências.",
+      "patterns": [
+        "SMC\\s+PANIC",
+        "SMC[^\\n]*ASSERT"
+      ],
+      "suppressedBy": [
+        "smc-bsc-failure",
+        "bsc-13-bit11",
+        "bsc-14pm-bit18",
+        "bsc-14pm-bit19",
+        "bsc-14-bit22",
+        "bsc-battery-tb0t",
+        "bsc-battery-tb0t-d28",
+        "bsc-15-taop",
+        "bsc-15-taop-taoj",
+        "bsc-15plus-taoj",
+        "bsc-15pro-taoc-taoj",
+        "bsc-16pro-taop-taoc",
+        "bsc-17pm-taop-taoc",
+        "bsc-bit20-d37",
+        "bsc-bit20-d27",
+        "bsc-bit20-d74",
+        "bsc-16-d47a",
+        "bsc-14pm-ver150",
+        "bsc-14pm-taop-taoj",
+        "bsc-14-ver40-bit21",
+        "bsc-14-taop-taoj",
+        "bsc-14p-bit19",
+        "bsc-13-bit12",
+        "bsc-13-bit11-12",
+        "bsc-15pro-taoc",
+        "bsc-14pm-unspecified",
+        "bsc-14pm-taoi",
+        "bsc-14-bit20-22"
+      ],
+      "strength": 1,
+      "causes": [
+        {
+          "component": "placa-energia",
+          "weight": 40
+        },
+        {
+          "component": "flex-carga",
+          "weight": 30
+        },
+        {
+          "component": "bateria",
+          "weight": 30
+        }
+      ]
+    },
+    {
+      "id": "missing-tg0b",
+      "title": "Sensor de temperatura da bateria ausente (TG0B)",
+      "explanation": "O sensor TG0B, ligado à bateria, não respondeu na inicialização.",
+      "patterns": [
+        "Missing sensor\\(s\\):[^\\n]*\\bTG0B\\b"
+      ],
+      "strength": 8,
+      "causes": [
+        {
+          "component": "bateria-comunicacao",
+          "weight": 60
+        },
+        {
+          "component": "bateria",
+          "weight": 20
+        },
+        {
+          "component": "barramento-i2c",
+          "weight": 10
+        },
+        {
+          "component": "circuito-carga",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "missing-tg0v",
+      "title": "Sensor ligado à bateria ausente (TG0V)",
+      "explanation": "Um sensor ligado à leitura da bateria não respondeu.",
+      "patterns": [
+        "Missing sensor\\(s\\):[^\\n]*\\bTG0V\\b"
+      ],
+      "suppressedBy": [
+        "missing-tg0b"
+      ],
+      "strength": 6,
+      "causes": [
+        {
+          "component": "bateria",
+          "weight": 50
+        },
+        {
+          "component": "placa-energia",
+          "weight": 30
+        },
+        {
+          "component": "bateria-comunicacao",
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "id": "missing-prs0",
+      "title": "Sensor de pressão ausente (prs0)",
+      "explanation": "O sensor de pressão (barômetro) não foi detectado na inicialização.",
+      "patterns": [
+        "Missing sensor\\(s\\):[^\\n]*\\bprs0\\b"
+      ],
+      "strength": 6,
+      "causes": [
+        {
+          "component": "flex-barometro",
+          "weight": 80
+        },
+        {
+          "component": "barramento-i2c",
+          "weight": 10
+        },
+        {
+          "component": "interposer",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "missing-mic2",
+      "title": "Microfone 2 ausente na inicialização",
+      "explanation": "O microfone 2 não respondeu. Em modelos como o iPhone 11 ele fica no flex do botão power. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "Missing sensor\\(s\\):[^\\n]*\\bmic2\\b"
+      ],
+      "strength": 6,
+      "causes": [
+        {
+          "component": "flex-power-mic2",
+          "weight": 70
+        },
+        {
+          "component": "circuito-audio",
+          "weight": 10
+        },
+        {
+          "component": "codec-audio",
+          "weight": 10
+        },
+        {
+          "component": "interposer",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "missing-mic1",
+      "title": "Microfone 1 ausente na inicialização",
+      "explanation": "O microfone 1 não respondeu. Em vários modelos ele fica no flex de carga. Padrão observado em casos reais; falta confirmação de bancada.",
+      "patterns": [
+        "Missing sensor\\(s\\):[^\\n]*\\bmic1\\b"
+      ],
+      "strength": 6,
+      "causes": [
+        {
+          "component": "flex-carga-mic1",
+          "weight": 60
+        },
+        {
+          "component": "circuito-audio",
+          "weight": 10
+        },
+        {
+          "component": "codec-audio",
+          "weight": 10
+        },
+        {
+          "component": "barramento-i2c",
+          "weight": 10
+        },
+        {
+          "component": "interposer",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "missing-mic",
+      "title": "Microfone ausente na inicialização",
+      "explanation": "O log lista um microfone entre os sensores que não responderam.",
+      "patterns": [
+        "Missing sensor\\(s\\):[^\\n]*\\bmic[34]\\b"
+      ],
+      "strength": 6,
+      "causes": [
+        {
+          "component": "microfones",
+          "weight": 50
+        },
+        {
+          "component": "flex-carga",
+          "weight": 40
+        },
+        {
+          "component": "placa-energia",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "aop-spmi",
+      "title": "Falha na linha AOP SPMI",
+      "explanation": "O controlador SPMI do AOP recebeu resposta inválida. Verifique a linha AOP SPMI e os componentes ligados a ela. Os suspeitos mais comuns são o flex do sensor de proximidade e o interposer. Falta confirmação de bancada.",
+      "patterns": [
+        "AppleSPMIController\\[aop-spmi\\d\\]"
+      ],
+      "strength": 6,
+      "causes": [
+        {
+          "component": "proximidade-flex",
+          "weight": 60
+        },
+        {
+          "component": "interposer",
+          "weight": 40
+        }
+      ]
+    },
+    {
+      "id": "aop-panic",
+      "title": "Falha no coprocessador AOP",
+      "explanation": "O coprocessador AOP travou. Costuma estar ligado a sensores e microfones.",
+      "patterns": [
+        "\\bAOP\\b\\s+(NMI|PANIC)",
+        "\\bAOP\\b[^\\n]*\\bpanic"
+      ],
+      "suppressedBy": [
+        "aop-eiger"
+      ],
+      "strength": 5,
+      "causes": [
+        {
+          "component": "proximidade-flex",
+          "weight": 60
+        },
+        {
+          "component": "software",
+          "weight": 20
+        },
+        {
+          "component": "bussola-giroscopio",
+          "weight": 10
+        },
+        {
+          "component": "vibracall",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "thermalmonitord-watchdog",
+      "title": "Monitor de temperatura parou de responder",
+      "explanation": "O serviço que monitora a temperatura não deu sinal de vida. É comum quando algum sensor está ausente.",
+      "patterns": [
+        "checkins from thermalmonitord",
+        "thermalmonitord[^\\n]*watchdog"
+      ],
+      "excludeIf": [
+        "Missing sensor\\(s\\):"
+      ],
+      "strength": 4,
+      "causes": [
+        {
+          "component": "sensores-termicos",
+          "weight": 40
+        },
+        {
+          "component": "bateria",
+          "weight": 30
+        },
+        {
+          "component": "flex-carga",
+          "weight": 30
+        }
+      ]
+    },
+    {
+      "id": "watchdog-userspace",
+      "title": "Um serviço do sistema parou de responder",
+      "explanation": "Um serviço do iOS deixou de dar sinal de vida. Pode ser software ou falha física.",
+      "patterns": [
+        "userspace watchdog timeout",
+        "no successful checkins"
+      ],
+      "excludeIf": [
+        "checkins from thermalmonitord"
+      ],
+      "strength": 1,
+      "causes": [
+        {
+          "component": "software",
+          "weight": 40
+        },
+        {
+          "component": "placa-energia",
+          "weight": 30
+        },
+        {
+          "component": "flex-carga",
+          "weight": 30
+        }
+      ]
+    },
+    {
+      "id": "i2c-error",
+      "title": "Falha de comunicação em linha I2C",
+      "explanation": "Houve falha na comunicação entre o processador e um periférico.",
+      "patterns": [
+        "\\bi2c\\d?\\b[^\\n]*(timeout|error|fail)"
+      ],
+      "strength": 2,
+      "causes": [
+        {
+          "component": "flex-carga",
+          "weight": 40
+        },
+        {
+          "component": "placa-energia",
+          "weight": 40
+        },
+        {
+          "component": "bateria-comunicacao",
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "id": "nand-storage",
+      "title": "Falha no armazenamento (NAND)",
+      "explanation": "O log aponta falha no controlador ou na memória de armazenamento.",
+      "patterns": [
+        "\\bANS2?\\b[^\\n]*(fail|assert|panic)",
+        "\\bNVMe\\b[^\\n]*(fail|panic)",
+        "\\bNAND\\b[^\\n]*(fail|error|panic)"
+      ],
+      "strength": 5,
+      "causes": [
+        {
+          "component": "nand",
+          "weight": 65
+        },
+        {
+          "component": "software",
+          "weight": 25
+        },
+        {
+          "component": "cpu",
+          "weight": 10
+        }
+      ]
+    },
+    {
+      "id": "baseband",
+      "title": "Falha no módulo de rede celular",
+      "explanation": "O modem (baseband) gerou uma falha crítica.",
+      "patterns": [
+        "\\bbaseband\\b[^\\n]*(panic|crash|fail|timeout)",
+        "CP crash"
+      ],
+      "strength": 5,
+      "causes": [
+        {
+          "component": "baseband",
+          "weight": 80
+        },
+        {
+          "component": "placa-energia",
+          "weight": 20
+        }
+      ]
+    },
+    {
+      "id": "wifi-bt",
+      "title": "Falha no módulo de Wi-Fi",
+      "explanation": "O módulo de Wi-Fi gerou uma falha crítica.",
+      "patterns": [
+        "AppleBCMWLAN[^\\n]*(panic|assert|crash|fail)",
+        "\\bWLAN\\b[^\\n]*(panic|assert|crash)"
+      ],
+      "strength": 5,
+      "causes": [
+        {
+          "component": "wifi",
+          "weight": 80
+        },
+        {
+          "component": "placa-energia",
+          "weight": 20
+        }
+      ]
+    }
+  ],
+  "sensors": [
+    {
+      "code": "TG0B",
+      "name": "Sensor de temperatura da bateria",
+      "location": "Bateria e conector da bateria",
+      "tip": "Teste com outra bateria. Se o código continuar, verifique o conector e as linhas desse sensor na placa."
+    },
+    {
+      "code": "TG0V",
+      "name": "Sensor de temperatura ligado ao circuito da bateria",
+      "location": "Bateria e circuito da bateria",
+      "tip": "Teste com uma bateria boa e confira o conector. Confirme no esquema do modelo."
+    },
+    {
+      "code": "prs0",
+      "name": "Sensor de pressão (barômetro)",
+      "location": "A posição varia conforme o modelo. Confira no esquema do seu aparelho.",
+      "tip": "Troque a peça que leva o barômetro nesse modelo e veja se o código some do log."
+    },
+    {
+      "code": "mic1",
+      "name": "Microfone",
+      "location": "A posição (inferior, frontal ou traseira) varia conforme o modelo.",
+      "tip": "Desconecte, um por vez, os flexes que têm microfone (carga, botão de energia, flash, câmeras) e veja qual faz o código sumir."
+    },
+    {
+      "code": "mic2",
+      "name": "Microfone",
+      "location": "A posição (inferior, frontal ou traseira) varia conforme o modelo.",
+      "tip": "Desconecte, um por vez, os flexes que têm microfone (carga, botão de energia, flash, câmeras) e veja qual faz o código sumir."
+    },
+    {
+      "code": "mic3",
+      "name": "Microfone",
+      "location": "A posição (inferior, frontal ou traseira) varia conforme o modelo.",
+      "tip": "Desconecte, um por vez, os flexes que têm microfone (carga, botão de energia, flash, câmeras) e veja qual faz o código sumir."
+    },
+    {
+      "code": "mic4",
+      "name": "Microfone",
+      "location": "A posição (inferior, frontal ou traseira) varia conforme o modelo.",
+      "tip": "Desconecte, um por vez, os flexes que têm microfone (carga, botão de energia, flash, câmeras) e veja qual faz o código sumir."
+    }
+  ]
+}
